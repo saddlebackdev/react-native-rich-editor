@@ -391,7 +391,9 @@ function createHTML(options = {}) {
             init: function (){
                 if (${useContainer}){
                     // setInterval(Actions.UPDATE_HEIGHT, 150);
-                    Actions.UPDATE_HEIGHT();
+                    setTimeout(() => {
+                        Actions.UPDATE_HEIGHT();
+                    }, 0);
                 } else {
                     body.style.height = docEle.clientHeight + 'px';
                 }
