@@ -390,10 +390,19 @@ function createHTML(options = {}) {
 
             init: function (){
                 if (${useContainer}){
-                    // setInterval(Actions.UPDATE_HEIGHT, 150);
-                    setTimeout(() => {
-                        Actions.UPDATE_HEIGHT();
-                    }, 100);
+                    if (${useContainer}){
+                        var timesRun = 0;
+                        var interval = setInterval(function(){
+                            timesRun += 1;
+                            console.log('here i am');
+                            if(timesRun === 5){
+                                clearInterval(interval);
+                            }
+                            Actions.UPDATE_HEIGHT();
+                        }, 200); 
+                    } else {
+                        body.style.height = docEle.clientHeight + 'px';
+                    }
                 } else {
                     body.style.height = docEle.clientHeight + 'px';
                 }
