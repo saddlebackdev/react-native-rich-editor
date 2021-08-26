@@ -394,7 +394,6 @@ function createHTML(options = {}) {
                         var timesRun = 0;
                         var interval = setInterval(function(){
                             timesRun += 1;
-                            console.log('here i am');
                             if(timesRun === 5){
                                 clearInterval(interval);
                             }
