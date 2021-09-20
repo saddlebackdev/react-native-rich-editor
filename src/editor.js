@@ -535,6 +535,9 @@ function createHTML(options = {}) {
             }
             function handleClick(event){
                 var ele = event.target;
+                event.preventDefault();
+                _postMessage({type: 'OPEN_LINK', data: e.target.href});
+                event.stopPropagation();
                 if (ele.nodeName === 'INPUT' && ele.type === 'checkbox'){
                     // Set whether the checkbox is selected by default
                     if (ele.checked) ele.setAttribute('checked', '');

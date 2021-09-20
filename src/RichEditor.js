@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {WebView} from 'react-native-webview';
 import {actions, messages} from './const';
-import {Keyboard, Platform, StyleSheet, TextInput, View} from 'react-native';
+import {Keyboard, Platform, StyleSheet, TextInput, View, Linking} from 'react-native';
 import {createHTML} from './editor';
 
 const PlatformIOS = Platform.OS === 'ios';
@@ -191,6 +191,11 @@ export default class RichTextEditor extends Component {
                     break;
                 case messages.OFFSET_HEIGHT:
                     that.setWebHeight(data);
+                    break;
+                case messages.OPEN_LINK:
+                    if (data !== undefined && data !== null) {
+                        Linking.openURL(data);
+                    }
                     break;
                 case messages.OFFSET_Y:
                     let offsetY = Number.parseInt(Number.parseInt(data) + that.layout.y || 0);
