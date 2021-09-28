@@ -262,7 +262,7 @@ export default class RichTextEditor extends Component {
                     scrollEnabled={false}
                     hideKeyboardAccessoryView={true}
                     keyboardDisplayRequiresUserAction={false}
-                    androidLayerType={Platform.OS === 'android' ? 'hardware' : 'none'}
+                    androidLayerType={Platform.OS === 'android' && Platform.Version <= 22 ? 'hardware' : 'none'}
                     {...rest}
                     ref={that.setRef}
                     onMessage={that.onMessage}
